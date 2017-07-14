@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/MxOnline.iml" filepath="$PROJECT_DIR$/.idea/MxOnline.iml" />
+      <module fileurl="file://C:\Users\Administrator\PycharmProjects\testdjango\.idea\testdjango.iml" filepath="C:\Users\Administrator\PycharmProjects\testdjango\.idea\testdjango.iml" />
+      <module fileurl="file://C:\Users\Administrator\PycharmProjects\untitled\.idea\untitled.iml" filepath="C:\Users\Administrator\PycharmProjects\untitled\.idea\untitled.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../xiazaiwangzhan/.idea/xiazaiwangzhan.iml" filepath="$PROJECT_DIR$/../xiazaiwangzhan/.idea/xiazaiwangzhan.iml" />
+    </modules>
+  </component>
+</project>

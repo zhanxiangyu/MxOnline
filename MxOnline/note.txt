@@ -1,0 +1,49 @@
+用户名：admin
+密码：zhan123456
+邮箱：1033432955@qq.com
+
+邮箱授权码：frmkvkofgntvbbja
+nyspdsgxknjrbcag
+jrjwoiuhwrikbcea
+hvtvketbfnnjbbea
+Django (1.9.8)
+MySQL-python (1.2.5)
+Pillow (4.1.1)
+pip (9.0.1)
+python 2.7
+虚拟环境 mxonline
+
+http://www.projectsedu.com/ 聚学在线
+
+
+{% if request.user.is_authenticated %}  #判断用户是否登录
+{{ forloop.counter }} 模板中使用for循环获取个数
+{{ course.get_degree_display }} 获取choice字段类型的值方法
+{% if request.path|slice:'7' == '/course' %}class="active" {% endif %} 对path进行过滤，path是相对路径,slice过滤器是取前面几位字母
+{{ request.user.birday|default_if_none:'' }} 如果默认的值为none，就修改为其他的值
+
+#导入Q进行并集查询, __icontains是django语法,其中的i代表不区分大小写,contains代表包含, 进行搜索功能的制作
+all_courses = all_courses.filter(Q(name__icontains=keywords)|Q(desc__icontains=keywords)|Q(detail__icontains=keywords))
+
+
+#form表单提交要点:
+1. 有文件提交的需要指定 multipart/form-data
+2. 只要是post提交的就需要  {% csrf_token %}
+3. type="file" name="image" 文件的类型和name名字必设定和model名字一样
+<form class="clearfix" id="jsAvatarForm" enctype="multipart/form-data" autocomplete="off" method="post" action="{% url 'user:image_upload' %}" target='frameFile'>
+
+                <input type="file" name="image" id="avatarUp" class="js-img-up"/>
+
+                        {% csrf_token %}
+{#                        <input type='hidden' name='csrfmiddlewaretoken' value='799Y6iPeEDNSGvrTu3noBrO4MBLv6enY' />#}
+                    </form>
+
+
+4.    def get_course_number(self):
+        """
+        获取课程数量, 反向获取外键
+        :return:
+        """
+        return self.course_set.all().count()
+
+
