@@ -19,6 +19,7 @@ http://www.projectsedu.com/ 聚学在线
 {% if request.user.is_authenticated %}  #判断用户是否登录
 {{ forloop.counter }} 模板中使用for循环获取个数 数字从1开始
 {{ forloop.counter|add:2 }}   数字从3开始
+{% if forloop.counter|divisibleby:5 %}aa{% endif %} 判断是否被5整除
 {{ course.get_degree_display }} 获取choice字段类型的值方法
 {% if request.path|slice:'7' == '/course' %}class="active" {% endif %} 对path进行过滤，path是相对路径,slice过滤器是取前面几位字母
 {{ request.user.birday|default_if_none:'' }} 如果默认的值为none，就修改为其他的值
