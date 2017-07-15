@@ -23,7 +23,7 @@ from django.views.static import serve       #django处理静态文件的函数
 import xadmin
 from users.views import LoginView,LogoutView,RegisterView,ActiveUserView, ForgetView,ResetView,ModifyView
 from organization.views import OrgView
-from MxOnline.settings import  MEDIA_ROOT
+from MxOnline.settings import  MEDIA_ROOT,STATIC_ROOT
 
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
@@ -47,6 +47,13 @@ urlpatterns = [
     url(r'^users/', include('users.urls', namespace='users')),
 
     #配置上传文件的访问处理函数
-    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT})
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
+    #配置静态文件访问路径
+    url(r'^static/(?P<path>.*)$', serve, {'document_root': STATIC_ROOT}),
 
 ]
+
+#全局404页面配置
+handler404 = 'users.views.page_not_found'
+#全局500页面配置
+handler500 = 'users.views.page_error'

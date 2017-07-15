@@ -8,7 +8,9 @@ from django.contrib.auth.hashers import make_password
 from django.db.models import Q
 from django.views.generic.base import View
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
+
 
 from .models import UserProfile, EmailVerifyRecord
 from .forms import LoginFrom,RegisterFrom,ForgetFrom,ModifyFrom, UserInfoFrom
@@ -113,7 +115,7 @@ class LogoutView(View):
     """
     def get(self, request):
         logout(request)
-        from django.core.urlresolvers import reverse
+
         return HttpResponseRedirect(reverse('index'))
 
 
@@ -129,7 +131,8 @@ class LoginView(View):  #基于类的调用
             if user is not None:
                 if user.is_active:
                     login(request, user)  # 将用户信息放入request里面
-                    return render(request, 'index.html')
+                    return HttpResponseRedirect(reverse('index'))
+                    # return render(request, 'index.html')
                 else:
                     return render(request, 'login.html', {'msg': u'用户未激活，请到邮箱查看激活链接'})
             else:
@@ -360,3 +363,24 @@ class UserMessageView(LoginRequiredMixin, View):
         return render(request, 'usercenter-message.html', {
             'all_messages':all_messages,
         })
+
+
+def page_not_found(request):
+    """
+    全局404处理函数
+    """
+    from django.shortcuts import render_to_response
+    response = render_to_response('404.html', {})
+    response.status_code = 404
+    return response
+
+def page_error(request):
+    """
+    全局404处理函数
+    :param request:
+    :return:
+    """
+    from django.shortcuts import render_to_response
+    response = render_to_response('500.html', {})
+    response.status_code = 500
+    return response

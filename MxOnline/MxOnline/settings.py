@@ -27,9 +27,9 @@ sys.path.insert(1, os.path.join(BASE_DIR, 'extra_apps'))
 SECRET_KEY = '^jb3qc)(3_1#fkk!3wb)l$5bn407@x3!i11%ykod6%3g%$d@)5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] #允许所有端口进行访问
 
 
 # Application definition
@@ -140,7 +140,7 @@ USE_TZ = False  #修改为false，不然存储数据库的时间为UTC时间
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
+STATICFILES_DIRS = [ #DEBUG = false 的时候这个失效了
     os.path.join(BASE_DIR, 'static') #加载静态文件的配置，需要添加的
 ]
 
@@ -157,3 +157,6 @@ EMAIL_FROM = '15797738965@sina.cn'
 #上传文件配置
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+#生产环境下的静态文件查找路径
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
