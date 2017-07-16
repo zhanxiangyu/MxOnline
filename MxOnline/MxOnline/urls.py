@@ -23,7 +23,7 @@ from django.views.static import serve       #django处理静态文件的函数
 import xadmin
 from users.views import LoginView,LogoutView,RegisterView,ActiveUserView, ForgetView,ResetView,ModifyView
 from organization.views import OrgView
-from MxOnline.settings import  MEDIA_ROOT,STATIC_ROOT
+from MxOnline.settings import  MEDIA_ROOT #,STATIC_ROOT
 
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
@@ -49,7 +49,7 @@ urlpatterns = [
     #配置上传文件的访问处理函数
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     #配置静态文件访问路径
-    url(r'^static/(?P<path>.*)$', serve, {'document_root': STATIC_ROOT}),
+    # url(r'^static/(?P<path>.*)$', serve, {'document_root': STATIC_ROOT}),
 
 ]
 

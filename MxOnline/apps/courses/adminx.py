@@ -10,6 +10,7 @@ class CourseAdmin(object):
     list_display = ('name','desc','detail','degree','learn_times','students','fav_nums','click_nums')
     search_fields = ('name','desc','detail','degree','learn_times','students','fav_nums','click_nums')
     list_filter = ('name','desc','detail','degree','learn_times','students','fav_nums','click_nums')
+    ordering = ['-click_nums'] #降序排列
     pass
 
 

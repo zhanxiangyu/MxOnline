@@ -27,9 +27,9 @@ sys.path.insert(1, os.path.join(BASE_DIR, 'extra_apps'))
 SECRET_KEY = '^jb3qc)(3_1#fkk!3wb)l$5bn407@x3!i11%ykod6%3g%$d@)5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*'] #允许所有端口进行访问
+ALLOWED_HOSTS = [] #允许所有端口进行访问
 
 
 # Application definition
@@ -159,4 +159,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 #生产环境下的静态文件查找路径
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
+# STATIC_ROOT = os.path.join(BASE_DIR,'static')
